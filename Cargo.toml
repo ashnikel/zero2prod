@@ -25,7 +25,7 @@ chrono = "0.4.15"
 
 [dependencies.sqlx]
 version = "0.6"
-defalut-features = false
+default-features = false
 features = [
     "runtime-actix-rustls",
     "macros",
