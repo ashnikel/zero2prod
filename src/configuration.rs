@@ -1,10 +1,19 @@
+use std::env;
+
+use config::Environment;
 use secrecy::ExposeSecret;
 use secrecy::Secret;
 
 #[derive(serde::Deserialize)]
 pub struct Settings {
     pub database: DatabaseSettings,
-    pub application_port: u16,
+    pub application: ApplicationSettings,
+}
+
+#[derive(serde::Deserialize)]
+pub struct ApplicationSettings {
+    pub port: u16,
+    pub host: String,
 }
 
 #[derive(serde::Deserialize)]
@@ -40,6 +49,13 @@ impl DatabaseSettings {
 }
 
 pub fn get_configuration() -> Result<Settings, config::ConfigError> {
+    let base_path = std:::env::current_dir().expect("Failed to determine the current directory");
+    let configuration_directory = base_path.join("configuration");
+
+    // Detect the running environment.
+    // Default to `local` if unspecified.
+    let environment: Environment = std::env::var("APP_ENVIRONMENT")
+        
     //  Initialise our configuration reader
     let settings = config::Config::builder()
         // Add configuration values from a file named `configuration.yaml`.
