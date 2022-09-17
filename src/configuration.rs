@@ -1,5 +1,3 @@
-use std::env;
-
 use secrecy::ExposeSecret;
 use secrecy::Secret;
 
