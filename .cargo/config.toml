@@ -14,6 +14,8 @@ rustflags = ["-C", "link-arg=-fuse-ld=lld"]
 rustflags = ["-C", "linker=clang", "-C", "link-arg=-fuse-ld=lld"]
 # On MacOS, `brew install michaeleisel/zld/zld`
 [target.x86_64-apple-darwin]
-rustflags = ["-C", "link-arg=-fuse-ld=/opt/homebrew/bin/zld"]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
 [target.aarch64-apple-darwin]
-rustflags = ["-C", "link-arg=-fuse-ld=/opt/homebrew/bin/zld"]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
