@@ -5,7 +5,7 @@ services:
     dockerfile_path: Dockerfile
     source_dir: .
     github:
-      branch: main
+      branch: ch05
       deploy_on_push: true
       repo: ashnikel/zero2prod
     # Active probe used by DigitalOcean's to ensure our application is healthy
@@ -30,7 +30,7 @@ services:
       - key: APP_DATABASE__PORT
         scope: RUN_TIME
         value: ${newsletter.PORT}
-      - key: APP_DATABASE__USERNAME
+      - key: APP_DATABASE__DATABASE_NAME
         scope: RUN_TIME
         value: ${newsletter.DATABASE}
 databases:
